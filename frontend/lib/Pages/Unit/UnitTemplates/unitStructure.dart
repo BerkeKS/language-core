@@ -372,9 +372,10 @@ class _UnitAccesserState extends State<UnitAccesser> {
                 ),
                 child: IconButton(
                     onPressed: (() {
-                      setState(() {
-                        int currentUnitNumber = int.parse(
-                            getCurrentPage().toString().split(" ")[1]);
+                      setState(() async {
+                        String currentPage = await getCurrentPage();
+                        int currentUnitNumber =
+                            int.parse(currentPage.split(" ")[1]);
                         currentUnitNumber--;
                         Navigator.pushNamed(context, "/unit$currentUnitNumber");
                         setCurrentPage("Unit $currentUnitNumber");
@@ -405,9 +406,10 @@ class _UnitAccesserState extends State<UnitAccesser> {
                   ),
                   child: IconButton(
                       onPressed: (() {
-                        setState(() {
-                          int currentUnitNumber = int.parse(
-                              getCurrentPage().toString().split(" ")[1]);
+                        setState(() async {
+                          String currentPage = await getCurrentPage();
+                          int currentUnitNumber =
+                              int.parse(currentPage.split(" ")[1]);
                           currentUnitNumber++;
                           Navigator.pushNamed(
                               context, "/unit$currentUnitNumber");

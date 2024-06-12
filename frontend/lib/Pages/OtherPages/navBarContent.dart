@@ -218,7 +218,7 @@ class _UnitListState extends State<UnitList> {
           text: "Unit 1",
           active: getCurrentPage() == "Unit 1",
           clicked: () {
-            setState(() {
+            setState(() async {
               setCurrentPage("Unit 1");
               Navigator.pushNamed(context, "/unit1");
               UnitStructure.unitPart = 0;

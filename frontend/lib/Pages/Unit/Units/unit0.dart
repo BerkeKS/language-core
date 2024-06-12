@@ -223,12 +223,8 @@ class _UnitAccesserState extends State<UnitAccesser> {
                   child: IconButton(
                       onPressed: (() {
                         setState(() {
-                          int currentUnitNumber = int.parse(
-                              getCurrentPage().toString().split(" ")[1]);
-                          currentUnitNumber++;
-                          Navigator.pushNamed(
-                              context, "/unit$currentUnitNumber");
-                          setCurrentPage("Unit $currentUnitNumber");
+                          Navigator.pushNamed(context, "/unit1");
+                          setCurrentPage("Unit 1");
                           UnitStructure.unitPart = 0;
                         });
                       }),
