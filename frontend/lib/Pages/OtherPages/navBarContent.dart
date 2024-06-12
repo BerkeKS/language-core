@@ -15,13 +15,14 @@ class NavBarContent extends StatefulWidget {
 class NavBarContentState extends State<NavBarContent> {
   bool isLogin = false;
   String username = "";
+  static String currentPage = "";
   @override
   void initState() {
     super.initState();
-    getLoginData();
+    getSPData();
   }
 
-  void getLoginData() async {
+  void getSPData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     if (sharedPreferences.containsKey("username")) {
       setState(() {
@@ -33,6 +34,7 @@ class NavBarContentState extends State<NavBarContent> {
         isLogin = false;
       });
     }
+    currentPage = await getCurrentPage();
   }
 
   /*
@@ -91,7 +93,7 @@ class NavBarContentState extends State<NavBarContent> {
                             )),
                   NavBarButton(
                     text: "User Profile",
-                    active: getCurrentPage() == "User Profile",
+                    active: currentPage == "User Profile",
                     clicked: () {
                       setState(() {
                         setCurrentPage("User Profile");
@@ -101,10 +103,10 @@ class NavBarContentState extends State<NavBarContent> {
                   ),
                   NavBarButton(
                     text: "Logout",
-                    active: getCurrentPage() == "Logout",
+                    active: currentPage == "Logout",
                     clicked: () {
                       setState(() {
-                        String temp = getCurrentPage();
+                        String temp = currentPage;
                         setCurrentPage("Logout");
                         showDialog(
                             context: context,
@@ -150,7 +152,7 @@ class NavBarContentState extends State<NavBarContent> {
                 children: <Widget>[
                   NavBarButton(
                     text: "Main Page",
-                    active: getCurrentPage() == "Main Page",
+                    active: currentPage == "Main Page",
                     clicked: () {
                       setState(() async {
                         setCurrentPage("Main Page");
@@ -160,7 +162,7 @@ class NavBarContentState extends State<NavBarContent> {
                   ),
                   NavBarButton(
                     text: "Login",
-                    active: getCurrentPage() == "Login",
+                    active: currentPage == "Login",
                     clicked: () {
                       setState(() {
                         setCurrentPage("Login");
@@ -170,7 +172,7 @@ class NavBarContentState extends State<NavBarContent> {
                   ),
                   NavBarButton(
                     text: "Register",
-                    active: getCurrentPage() == "Main Page",
+                    active: currentPage == "Register",
                     clicked: () {
                       setState(() {
                         setCurrentPage("Register");
@@ -202,7 +204,7 @@ class _UnitListState extends State<UnitList> {
       children: [
         NavBarButton(
           text: "Unit 0 - Introduction",
-          active: getCurrentPage() == "Unit 0",
+          active: NavBarContentState.currentPage == "Unit 0",
           clicked: () {
             setState(() {
               setCurrentPage("Unit 0");
@@ -216,7 +218,7 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 1",
-          active: getCurrentPage() == "Unit 1",
+          active: NavBarContentState.currentPage == "Unit 1",
           clicked: () {
             setState(() async {
               setCurrentPage("Unit 1");
@@ -230,7 +232,7 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 2",
-          active: getCurrentPage() == "Unit 2",
+          active: NavBarContentState.currentPage == "Unit 2",
           clicked: () {
             setState(() {
               setCurrentPage("Unit 2");
@@ -244,7 +246,7 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 3",
-          active: getCurrentPage() == "Unit 3",
+          active: NavBarContentState.currentPage == "Unit 3",
           clicked: () {
             setState(() {
               setCurrentPage("Unit 3");
@@ -259,7 +261,7 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 4",
-          active: getCurrentPage() == "Unit 4",
+          active: NavBarContentState.currentPage == "Unit 4",
           clicked: () {
             setState(() {
               setCurrentPage("Unit 4");
@@ -274,7 +276,7 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 5",
-          active: getCurrentPage() == "Unit 5",
+          active: NavBarContentState.currentPage == "Unit 5",
           clicked: () {
             setState(() {
               setCurrentPage("Unit 5");
@@ -292,7 +294,7 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Quiz 1",
-          active: getCurrentPage() == "Quiz 1",
+          active: NavBarContentState.currentPage == "Quiz 1",
           clicked: () {
             setState(() {
               setCurrentPage("Quiz 1");
@@ -306,7 +308,7 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Culture Part 1",
-          active: getCurrentPage() == "Culture Part 1",
+          active: NavBarContentState.currentPage == "Culture Part 1",
           clicked: () {
             setState(() {
               setCurrentPage("Culture Part 1");
