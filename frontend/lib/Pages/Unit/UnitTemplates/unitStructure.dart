@@ -132,7 +132,7 @@ class UnitStructureState extends State<UnitStructure> {
                           Container(
                             color: Colors.white,
                             width: MediaQuery.of(context).size.width *
-                                (1325 / 1366),
+                                (1300 / 1366),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -310,7 +310,7 @@ class _UnitSectionButtonState extends State<UnitSectionButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * (265 / 1366),
+      width: MediaQuery.of(context).size.width * (260 / 1366),
       child: Material(
         color: widget.active ? widget.color : Colors.transparent,
         child: InkWell(
