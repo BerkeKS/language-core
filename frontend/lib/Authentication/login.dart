@@ -1,7 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:language/Pages/OtherPages/NavBarContent.dart';
 import 'package:language/Pages/Unit/UnitTemplates/UnitStructure.dart';
 import 'package:language/Services/authService.dart';
 import 'package:language/Services/pageService.dart';

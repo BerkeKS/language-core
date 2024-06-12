@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:language/Models/sentence.dart';
 
 import 'package:language/Pages/OtherPages/navBar.dart';
-import 'package:language/Pages/OtherPages/navBarContent.dart';
 import 'package:language/Pages/Unit/UnitTemplates/unitVocabulary.dart';
 import 'package:language/Services/pageService.dart';
 import 'UnitExercise/unitExercise.dart';
@@ -374,13 +373,10 @@ class _UnitAccesserState extends State<UnitAccesser> {
                 child: IconButton(
                     onPressed: (() {
                       setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => widget.UnitBefore));
                         int currentUnitNumber = int.parse(
                             getCurrentPage().toString().split(" ")[1]);
                         currentUnitNumber--;
+                        Navigator.pushNamed(context, "/unit$currentUnitNumber");
                         setCurrentPage("Unit $currentUnitNumber");
                         UnitStructure.unitPart = 0;
                         VocabularyCardState.selectedLanguage = '';
@@ -410,13 +406,12 @@ class _UnitAccesserState extends State<UnitAccesser> {
                   child: IconButton(
                       onPressed: (() {
                         setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => widget.UnitAfter));
                           int currentUnitNumber = int.parse(
                               getCurrentPage().toString().split(" ")[1]);
-                          currentUnitNumber--;
+                          currentUnitNumber++;
+                          Navigator.pushNamed(
+                              context, "/unit$currentUnitNumber");
+                          setCurrentPage("Unit $currentUnitNumber");
                           setCurrentPage("Unit $currentUnitNumber");
                           UnitStructure.unitPart = 0;
                           VocabularyCardState.selectedLanguage = '';

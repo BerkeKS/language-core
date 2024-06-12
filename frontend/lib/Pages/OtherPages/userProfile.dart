@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Models/words.dart';
 import '../../Services/accountService.dart';
 import '../../Utility/tts.dart';
-import '../../authentication/signUp.dart';
 import '../Unit/UnitTemplates/unitVocabulary.dart';
 
 class UserProfile extends StatefulWidget {
@@ -534,12 +533,8 @@ class FavoriteVocabularyCardState extends State<FavoriteVocabularyCard> {
                                           color: Colors.blueAccent),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LogInPage(),
-                                              ));
+                                          Navigator.pushNamed(
+                                              context, "/login");
                                           setCurrentPage("Login");
                                         }),
                                   const TextSpan(
@@ -551,12 +546,8 @@ class FavoriteVocabularyCardState extends State<FavoriteVocabularyCard> {
                                           color: Colors.blueAccent),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SignUpPage(),
-                                              ));
+                                          Navigator.pushNamed(
+                                              context, "/register");
                                           setCurrentPage("Register");
                                         }),
                                   const TextSpan(text: " to register."),

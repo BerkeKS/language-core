@@ -3,10 +3,7 @@ import 'package:language/Pages/Unit/UnitTemplates/unitVocabulary.dart';
 import 'package:language/Services/authService.dart';
 import 'package:language/Services/pageService.dart';
 import 'package:language/Utility/googleLoginAPI.dart';
-import 'package:language/Pages/Quiz/Quizzes/Quiz1.dart';
-import 'package:language/Pages/OtherPages/UserProfile.dart';
 import 'package:language/Pages/Unit/UnitTemplates/UnitStructure.dart';
-import 'package:language/Pages/Unit/Units/Unit5.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NavBarContent extends StatefulWidget {
@@ -98,11 +95,7 @@ class NavBarContentState extends State<NavBarContent> {
                     clicked: () {
                       setState(() {
                         setCurrentPage("User Profile");
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => UserProfile()),
-                        );
+                        Navigator.pushNamed(context, "/userprofile");
                       });
                     },
                   ),
@@ -303,10 +296,7 @@ class _UnitListState extends State<UnitList> {
           clicked: () {
             setState(() {
               setCurrentPage("Quiz 1");
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Quiz1()),
-              );
+              Navigator.pushNamed(context, "/quiz1");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
               UnitVocabulary.translation = '';
@@ -321,10 +311,7 @@ class _UnitListState extends State<UnitList> {
             setState(() {
               setCurrentPage("Culture Part 1");
               ;
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Unit5()),
-              );
+              Navigator.pushNamed(context, "/culture1");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
               UnitVocabulary.translation = '';

@@ -9,7 +9,6 @@ import 'package:language/Models/learners.dart';
 import 'package:language/Models/Words.dart';
 import 'package:language/Services/pageService.dart';
 import 'package:language/Services/urls.dart';
-import 'package:language/Pages/OtherPages/navBarContent.dart';
 import 'package:language/Utility/googleLoginAPI.dart';
 import 'package:language/Utility/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,8 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:language/Authentication/login.dart';
-import 'package:language/Authentication/signUp.dart';
-import 'package:language/Pages/OtherPages/navBarContent.dart';
 import 'package:language/Services/accountService.dart';
 import 'package:language/Services/pageService.dart';
 import 'package:language/Services/wordService.dart';
@@ -376,12 +373,8 @@ class VocabularyCardState extends State<VocabularyCard> {
                                           color: Colors.blueAccent),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LogInPage(),
-                                              ));
+                                          Navigator.pushNamed(
+                                              context, "/login");
                                           setCurrentPage("Login");
                                         }),
                                   const TextSpan(
@@ -393,12 +386,8 @@ class VocabularyCardState extends State<VocabularyCard> {
                                           color: Colors.blueAccent),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SignUpPage(),
-                                              ));
+                                          Navigator.pushNamed(
+                                              context, "/register");
                                           setCurrentPage("Register");
                                         }),
                                   const TextSpan(text: " to register."),

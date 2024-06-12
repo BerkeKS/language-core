@@ -1,9 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:language/Pages/Unit/UnitTemplates/UnitExercise/unitWritingExercise.dart';
-import 'package:language/authentication/signUp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../authentication/login.dart';
 import 'UnitGrammarExercise.dart';
 import 'UnitVocabularyExercise.dart';
 
@@ -81,10 +79,7 @@ class _ExerciseBlockState extends State<ExerciseBlock> {
                       style: const TextStyle(color: Colors.blueAccent),
                       recognizer: TapGestureRecognizer()
                         ..onTap = (() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: ((context) => LogInPage())));
+                          Navigator.pushNamed(context, "/login");
                         })),
                   const TextSpan(text: " to log in."),
                   const TextSpan(text: "\nIf you are not registered, press "),
@@ -93,10 +88,7 @@ class _ExerciseBlockState extends State<ExerciseBlock> {
                       style: const TextStyle(color: Colors.blueAccent),
                       recognizer: TapGestureRecognizer()
                         ..onTap = (() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: ((context) => SignUpPage())));
+                          Navigator.pushNamed(context, "/register");
                         })),
                   const TextSpan(text: " to sign up.")
                 ])),
