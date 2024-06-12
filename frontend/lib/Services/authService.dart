@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:language/Models/learners.dart';
 import 'package:language/Models/Words.dart';
+import 'package:language/Services/pageService.dart';
 import 'package:language/Services/urls.dart';
 import 'package:language/Pages/OtherPages/navBarContent.dart';
 import 'package:language/Utility/googleLoginAPI.dart';
@@ -57,7 +58,7 @@ void registerLearner(
                                 ..onTap = () {
                                   Navigator.pop(context);
                                   Navigator.pushNamed(context, '/login');
-                                  NavBarContentState.activePage = 1;
+                                  setCurrentPage("Login");
                                 }),
                           const TextSpan(text: " to login.")
                         ])),

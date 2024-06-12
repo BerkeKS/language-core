@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:language/Pages/OtherPages/navBar.dart';
+import 'package:language/Services/pageService.dart';
 import 'package:language/authentication/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Models/words.dart';
@@ -8,7 +9,6 @@ import '../../Services/accountService.dart';
 import '../../Utility/tts.dart';
 import '../../authentication/signUp.dart';
 import '../Unit/UnitTemplates/unitVocabulary.dart';
-import 'navBarContent.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -540,9 +540,7 @@ class FavoriteVocabularyCardState extends State<FavoriteVocabularyCard> {
                                                 builder: (context) =>
                                                     LogInPage(),
                                               ));
-                                          setState(() {
-                                            NavBarContentState.activePage = 1;
-                                          });
+                                          setCurrentPage("Login");
                                         }),
                                   const TextSpan(
                                       text:
@@ -559,9 +557,7 @@ class FavoriteVocabularyCardState extends State<FavoriteVocabularyCard> {
                                                 builder: (context) =>
                                                     SignUpPage(),
                                               ));
-                                          setState(() {
-                                            NavBarContentState.activePage = 2;
-                                          });
+                                          setCurrentPage("Register");
                                         }),
                                   const TextSpan(text: " to register."),
                                 ])),

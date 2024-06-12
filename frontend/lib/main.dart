@@ -2,11 +2,11 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:language/Pages/Unit/Units/unit0.dart';
+import 'package:language/Services/pageService.dart';
 import 'package:language/authentication/login.dart';
 import 'package:language/Pages/OtherPages/navBar.dart';
 import 'package:language/authentication/signUp.dart';
 import 'package:language/Pages/OtherPages/UserProfile.dart';
-import 'Pages/OtherPages/NavBarContent.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'Pages/Unit/Units/unit1.dart';
@@ -148,9 +148,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
               ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, "/register");
-                    setState(() {
-                      NavBarContentState.activePage = 2;
-                    });
+                    setCurrentPage("Register");
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 100, 99, 99)),
@@ -171,7 +169,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
                           ..onTap = (() {
                             Navigator.pushNamed(context, "/login");
                             setState(() {
-                              NavBarContentState.activePage = 1;
+                              setCurrentPage("Login");
                             });
                           }))
                   ]))

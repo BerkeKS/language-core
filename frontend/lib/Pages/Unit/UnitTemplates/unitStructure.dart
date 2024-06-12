@@ -4,6 +4,7 @@ import 'package:language/Models/sentence.dart';
 import 'package:language/Pages/OtherPages/navBar.dart';
 import 'package:language/Pages/OtherPages/navBarContent.dart';
 import 'package:language/Pages/Unit/UnitTemplates/unitVocabulary.dart';
+import 'package:language/Services/pageService.dart';
 import 'UnitExercise/unitExercise.dart';
 import 'unitIntroduction.dart';
 import 'unitDialogue.dart';
@@ -266,7 +267,7 @@ class _UnitContentState extends State<UnitContent> {
         children: [
           Container(
               margin: const EdgeInsets.only(top: 10),
-              height: MediaQuery.of(context).size.height * 0.88,
+              height: MediaQuery.of(context).size.height * 0.87,
               child: ContentScreen[UnitStructure.unitPart])
         ]);
   }
@@ -377,7 +378,10 @@ class _UnitAccesserState extends State<UnitAccesser> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => widget.UnitBefore));
-                        NavBarContentState.activePage--;
+                        int currentUnitNumber = int.parse(
+                            getCurrentPage().toString().split(" ")[1]);
+                        currentUnitNumber--;
+                        setCurrentPage("Unit $currentUnitNumber");
                         UnitStructure.unitPart = 0;
                         VocabularyCardState.selectedLanguage = '';
                       });
@@ -410,7 +414,10 @@ class _UnitAccesserState extends State<UnitAccesser> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => widget.UnitAfter));
-                          NavBarContentState.activePage++;
+                          int currentUnitNumber = int.parse(
+                              getCurrentPage().toString().split(" ")[1]);
+                          currentUnitNumber--;
+                          setCurrentPage("Unit $currentUnitNumber");
                           UnitStructure.unitPart = 0;
                           VocabularyCardState.selectedLanguage = '';
                         });

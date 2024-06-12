@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:language/Pages/Unit/UnitTemplates/unitVocabulary.dart';
 import 'package:language/Services/authService.dart';
+import 'package:language/Services/pageService.dart';
 import 'package:language/Utility/googleLoginAPI.dart';
 import 'package:language/Pages/Quiz/Quizzes/Quiz1.dart';
 import 'package:language/Pages/OtherPages/UserProfile.dart';
@@ -24,11 +25,11 @@ class NavBarContentState extends State<NavBarContent> {
   }
 
   void getLoginData() async {
-    SharedPreferences loginPreferences = await SharedPreferences.getInstance();
-    if (loginPreferences.containsKey("username")) {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    if (sharedPreferences.containsKey("username")) {
       setState(() {
         isLogin = true;
-        username = loginPreferences.getString("username")!;
+        username = sharedPreferences.getString("username")!;
       });
     } else {
       setState(() {
@@ -61,7 +62,6 @@ class NavBarContentState extends State<NavBarContent> {
     }
   }
   */
-  static int activePage = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,10 +94,10 @@ class NavBarContentState extends State<NavBarContent> {
                             )),
                   NavBarButton(
                     text: "User Profile",
-                    active: NavBarContentState.activePage == 3,
+                    active: getCurrentPage() == "User Profile",
                     clicked: () {
                       setState(() {
-                        NavBarContentState.activePage = 3;
+                        setCurrentPage("User Profile");
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -108,11 +108,11 @@ class NavBarContentState extends State<NavBarContent> {
                   ),
                   NavBarButton(
                     text: "Logout",
-                    active: NavBarContentState.activePage == 4,
+                    active: getCurrentPage() == "Logout",
                     clicked: () {
                       setState(() {
-                        int temp = NavBarContentState.activePage;
-                        NavBarContentState.activePage = 4;
+                        String temp = getCurrentPage();
+                        setCurrentPage("Logout");
                         showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
@@ -124,8 +124,7 @@ class NavBarContentState extends State<NavBarContent> {
                                           Navigator.pop(context);
                                           setState(() {
                                             Navigator.pop(context);
-                                            NavBarContentState.activePage =
-                                                temp;
+                                            setCurrentPage(temp);
                                           });
                                         },
                                         child: const Text("CANCEL")),
@@ -139,9 +138,7 @@ class NavBarContentState extends State<NavBarContent> {
                                             logOut(context);
                                           }
                                           Navigator.pushNamed(context, '/');
-                                          setState(() {
-                                            NavBarContentState.activePage = 0;
-                                          });
+                                          setCurrentPage("Main Page");
                                         },
                                         child: const Text("OK"))
                                   ],
@@ -160,30 +157,30 @@ class NavBarContentState extends State<NavBarContent> {
                 children: <Widget>[
                   NavBarButton(
                     text: "Main Page",
-                    active: NavBarContentState.activePage == 0,
+                    active: getCurrentPage() == "Main Page",
                     clicked: () {
-                      setState(() {
-                        NavBarContentState.activePage = 0;
+                      setState(() async {
+                        setCurrentPage("Main Page");
                         Navigator.pushNamed(context, "/");
                       });
                     },
                   ),
                   NavBarButton(
                     text: "Login",
-                    active: NavBarContentState.activePage == 1,
+                    active: getCurrentPage() == "Login",
                     clicked: () {
                       setState(() {
-                        NavBarContentState.activePage = 1;
+                        setCurrentPage("Login");
                         Navigator.pushNamed(context, "/login");
                       });
                     },
                   ),
                   NavBarButton(
                     text: "Register",
-                    active: NavBarContentState.activePage == 2,
+                    active: getCurrentPage() == "Main Page",
                     clicked: () {
                       setState(() {
-                        NavBarContentState.activePage = 2;
+                        setCurrentPage("Register");
                         Navigator.pushNamed(context, "/register");
                       });
                     },
@@ -212,10 +209,10 @@ class _UnitListState extends State<UnitList> {
       children: [
         NavBarButton(
           text: "Unit 0 - Introduction",
-          active: NavBarContentState.activePage == 5,
+          active: getCurrentPage() == "Unit 0",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 5;
+              setCurrentPage("Unit 0");
               Navigator.pushNamed(context, "/unit0");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
@@ -226,10 +223,10 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 1",
-          active: NavBarContentState.activePage == 6,
+          active: getCurrentPage() == "Unit 1",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 6;
+              setCurrentPage("Unit 1");
               Navigator.pushNamed(context, "/unit1");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
@@ -240,10 +237,10 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 2",
-          active: NavBarContentState.activePage == 7,
+          active: getCurrentPage() == "Unit 2",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 7;
+              setCurrentPage("Unit 2");
               Navigator.pushNamed(context, "/unit2");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
@@ -254,10 +251,11 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 3",
-          active: NavBarContentState.activePage == 8,
+          active: getCurrentPage() == "Unit 3",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 8;
+              setCurrentPage("Unit 3");
+              ;
               Navigator.pushNamed(context, "/unit3");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
@@ -268,10 +266,11 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 4",
-          active: NavBarContentState.activePage == 9,
+          active: getCurrentPage() == "Unit 4",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 9;
+              setCurrentPage("Unit 4");
+              ;
               Navigator.pushNamed(context, "/unit4");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
@@ -282,10 +281,11 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Unit 5",
-          active: NavBarContentState.activePage == 10,
+          active: getCurrentPage() == "Unit 5",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 10;
+              setCurrentPage("Unit 5");
+              ;
               Navigator.pushNamed(context, "/unit5");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
@@ -299,10 +299,10 @@ class _UnitListState extends State<UnitList> {
         ),
         NavBarButton(
           text: "Quiz 1",
-          active: NavBarContentState.activePage == 11,
+          active: getCurrentPage() == "Quiz 1",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 11;
+              setCurrentPage("Quiz 1");
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Quiz1()),
@@ -315,11 +315,12 @@ class _UnitListState extends State<UnitList> {
           },
         ),
         NavBarButton(
-          text: "Culture Exploration",
-          active: NavBarContentState.activePage == 12,
+          text: "Culture Part 1",
+          active: getCurrentPage() == "Culture Part 1",
           clicked: () {
             setState(() {
-              NavBarContentState.activePage = 12;
+              setCurrentPage("Culture Part 1");
+              ;
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Unit5()),
@@ -345,7 +346,7 @@ class NavBarButton extends StatefulWidget {
   final String text;
 
   @override
-  NavBarButtonState createState() => new NavBarButtonState();
+  NavBarButtonState createState() => NavBarButtonState();
 }
 
 class NavBarButtonState extends State<NavBarButton> {

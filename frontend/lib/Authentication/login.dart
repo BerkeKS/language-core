@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:language/Pages/OtherPages/NavBarContent.dart';
 import 'package:language/Pages/Unit/UnitTemplates/UnitStructure.dart';
 import 'package:language/Services/authService.dart';
+import 'package:language/Services/pageService.dart';
 import 'package:language/Utility/icons.dart';
 import '../Pages/OtherPages/navBar.dart';
 
@@ -241,7 +242,7 @@ class _InputFormState extends State<InputForm> {
                               username: usernameController.text,
                               password: passwordController.text);
                           setState(() {
-                            NavBarContentState.activePage = 5;
+                            setCurrentPage("Unit 0");
                             UnitStructure.unitPart = 0;
                           });
                         } else {
@@ -250,7 +251,7 @@ class _InputFormState extends State<InputForm> {
                               email: emailController.text,
                               password: passwordController.text);
                           setState(() {
-                            NavBarContentState.activePage = 5;
+                            setCurrentPage("Unit 0");
                             UnitStructure.unitPart = 0;
                           });
                         }
@@ -281,9 +282,7 @@ class _InputFormState extends State<InputForm> {
                           recognizer: TapGestureRecognizer()
                             ..onTap = (() {
                               Navigator.pushNamed(context, "/register");
-                              setState(() {
-                                NavBarContentState.activePage = 2;
-                              });
+                              setCurrentPage("Register");
                             }))
                     ]),
               ),

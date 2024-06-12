@@ -2,10 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:language/Models/Words.dart';
 import 'package:language/Services/authService.dart';
+import 'package:language/Services/pageService.dart';
 import '../Pages/OtherPages/navBar.dart';
 import 'package:email_validator/email_validator.dart';
-
-import '../Pages/OtherPages/navBarContent.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -232,9 +231,7 @@ class _InputFormState extends State<InputForm> {
                           recognizer: TapGestureRecognizer()
                             ..onTap = (() {
                               Navigator.pushNamed(context, "/login");
-                              setState(() {
-                                NavBarContentState.activePage = 1;
-                              });
+                              setCurrentPage("Login");
                             }))
                     ]),
               ),

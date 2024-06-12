@@ -4,6 +4,7 @@ import 'package:language/Authentication/login.dart';
 import 'package:language/Authentication/signUp.dart';
 import 'package:language/Pages/OtherPages/navBarContent.dart';
 import 'package:language/Services/accountService.dart';
+import 'package:language/Services/pageService.dart';
 import 'package:language/Services/wordService.dart';
 import 'package:language/Utility/tts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -381,9 +382,7 @@ class VocabularyCardState extends State<VocabularyCard> {
                                                 builder: (context) =>
                                                     LogInPage(),
                                               ));
-                                          setState(() {
-                                            NavBarContentState.activePage = 1;
-                                          });
+                                          setCurrentPage("Login");
                                         }),
                                   const TextSpan(
                                       text:
@@ -400,9 +399,7 @@ class VocabularyCardState extends State<VocabularyCard> {
                                                 builder: (context) =>
                                                     SignUpPage(),
                                               ));
-                                          setState(() {
-                                            NavBarContentState.activePage = 2;
-                                          });
+                                          setCurrentPage("Register");
                                         }),
                                   const TextSpan(text: " to register."),
                                 ])),

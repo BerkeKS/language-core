@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:language/Pages/OtherPages/navBar.dart';
-import 'package:language/Pages/OtherPages/NavBarContent.dart';
 import 'package:language/Pages/Unit/UnitTemplates/UnitStructure.dart';
 import 'package:language/Pages/Unit/Units/Unit1.dart';
+
+import '../../../Services/pageService.dart';
 
 class Unit0 extends StatefulWidget {
   Unit0();
@@ -227,7 +227,11 @@ class _UnitAccesserState extends State<UnitAccesser> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => widget.UnitAfter));
-                          NavBarContentState.activePage += 1;
+                          int currentUnitNumber = int.parse(
+                              getCurrentPage().toString().split(" ")[1]);
+                          currentUnitNumber++;
+                          setCurrentPage("Unit $currentUnitNumber");
+                          ;
                           UnitStructure.unitPart = 0;
                         });
                       }),
