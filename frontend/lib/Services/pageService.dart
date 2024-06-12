@@ -15,7 +15,7 @@ getPage() async {
 
 getCurrentPage() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  sharedPreferences.getString("currentPage");
+  return sharedPreferences.getString("currentPage");
 }
 
 void setCurrentPage(String value) async {
