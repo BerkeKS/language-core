@@ -42,6 +42,7 @@ dependencies:
   flutter_tts: ^3.6.3
   learning_digital_ink_recognition: ^0.0.2
   google_sign_in: ^6.1.4
+  google_sign_in_web: ^0.12.0
 
 dev_dependencies:
   flutter_test:
