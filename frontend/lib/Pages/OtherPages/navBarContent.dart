@@ -312,7 +312,6 @@ class _UnitListState extends State<UnitList> {
           clicked: () {
             setState(() {
               setCurrentPage("Culture Part 1");
-              ;
               Navigator.pushNamed(context, "/culture1");
               UnitStructure.unitPart = 0;
               VocabularyCardState.selectedLanguage = '';
