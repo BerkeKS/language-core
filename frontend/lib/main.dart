@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:language/Pages/Culture/Culture.dart';
+import 'package:language/Pages/Quiz/Quizzes/Quiz1.dart';
 import 'package:language/Pages/Unit/Units/unit0.dart';
 import 'package:language/Services/pageService.dart';
 import 'package:language/authentication/login.dart';
@@ -45,6 +46,7 @@ class LanguageCoreState extends State<LanguageCore> {
         '/unit2': (context) => Unit2(),
         '/unit3': (context) => Unit3(),
         '/unit4': (context) => Unit4(),
+        '/quiz1': (context) => Quiz1(),
         '/culture1': (context) => CulturePage(pageNumber: 1)
       },
     );
