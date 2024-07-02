@@ -377,7 +377,13 @@ class _UnitAccesserState extends State<UnitAccesser> {
                         int currentUnitNumber =
                             int.parse(currentPage.split(" ")[1]);
                         currentUnitNumber--;
-                        Navigator.pushNamed(context, "/unit$currentUnitNumber");
+                        if (currentUnitNumber % 5 == 0) {
+                          Navigator.pushNamed(
+                              context, "/quiz${currentUnitNumber / 5}");
+                        } else {
+                          Navigator.pushNamed(
+                              context, "/unit$currentUnitNumber");
+                        }
                         setCurrentPage("Unit $currentUnitNumber");
                         UnitStructure.unitPart = 0;
                         VocabularyCardState.selectedLanguage = '';
@@ -411,8 +417,13 @@ class _UnitAccesserState extends State<UnitAccesser> {
                           int currentUnitNumber =
                               int.parse(currentPage.split(" ")[1]);
                           currentUnitNumber++;
-                          Navigator.pushNamed(
-                              context, "/unit$currentUnitNumber");
+                          if (currentUnitNumber % 5 == 0) {
+                            Navigator.pushNamed(
+                                context, "/quiz${currentUnitNumber / 5}");
+                          } else {
+                            Navigator.pushNamed(
+                                context, "/unit$currentUnitNumber");
+                          }
                           setCurrentPage("Unit $currentUnitNumber");
                           setCurrentPage("Unit $currentUnitNumber");
                           UnitStructure.unitPart = 0;
