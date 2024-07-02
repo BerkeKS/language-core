@@ -11,6 +11,33 @@ class CulturePage extends StatefulWidget {
 }
 
 class _CulturePageState extends State<CulturePage> {
+  int activeCountry = 0;
+  List<String> countriesToSee = ["China", "Germany", "South Korea", "Spain"];
+
+  void moveBackward(List<String> countries) {
+    if (activeCountry == 0) {
+      setState(() {
+        activeCountry = countries.length - 1;
+      });
+    } else {
+      setState(() {
+        activeCountry--;
+      });
+    }
+  }
+
+  void moveForward(List<String> countries) {
+    if (activeCountry == countries.length - 1) {
+      setState(() {
+        activeCountry = 0;
+      });
+    } else {
+      setState(() {
+        activeCountry++;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +49,63 @@ class _CulturePageState extends State<CulturePage> {
                 child: Column(
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         IconButton(
                             onPressed: () => Scaffold.of(context).openDrawer(),
                             icon: const Icon(Icons.menu),
-                            color: Colors.white)
+                            color: Colors.white),
+                        Expanded(
+                            child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(
+                                  MediaQuery.of(context).size.height / 45),
+                              child: Container(
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    borderRadius: BorderRadius.circular(10)),
+                                width: MediaQuery.of(context).size.width / 8,
+                                height: MediaQuery.of(context).size.height / 4,
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      (activeCountry == 0)
+                                          ? "images/languages/Chinese.png"
+                                          : (activeCountry == 1
+                                              ? "images/languages/German.png"
+                                              : (activeCountry == 2
+                                                  ? "images/languages/Korean.png"
+                                                  : (activeCountry == 3
+                                                      ? "images/languages/Spanish.png"
+                                                      : "images/languages/Global.png"))),
+                                      height: 150,
+                                      width: 150,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        IconButton(
+                                            onPressed: () =>
+                                                moveBackward(countriesToSee),
+                                            icon: const Icon(
+                                                Icons.arrow_back_ios_new)),
+                                        Text(countriesToSee[activeCountry]),
+                                        IconButton(
+                                            onPressed: () =>
+                                                moveForward(countriesToSee),
+                                            icon: const Icon(
+                                                Icons.arrow_forward_ios)),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ))
                       ],
                     )
                   ],
